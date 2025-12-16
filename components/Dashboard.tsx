@@ -19,11 +19,15 @@ const Dashboard: React.FC<DashboardProps> = ({ courses, tasks, toggleTask }) => 
 
   const todaysCourses = courses.filter(c => c.day === currentDayName).sort((a,b) => a.startTime.localeCompare(b.startTime));
   
+  // Calculate local date YYYY-MM-DD
+  const getTodayDate = () => {
+    const d = new Date();
+    return new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+  };
+  const todayStr = getTodayDate();
+
   const pendingTasks = tasks.filter(t => !t.completed).length;
-  const todaysTasks = tasks.filter(t => {
-      const today = new Date().toISOString().split('T')[0];
-      return t.dueDate === today && !t.completed;
-  });
+  const todaysTasks = tasks.filter(t => t.dueDate === todayStr && !t.completed);
 
   useEffect(() => {
     getDailyMotivation(pendingTasks).then(setMotivation);
@@ -76,7 +80,7 @@ const Dashboard: React.FC<DashboardProps> = ({ courses, tasks, toggleTask }) => 
                         <div className={`p-4 rounded-xl border-r-4 shadow-sm ${course.color.replace('bg-', 'border-').split(' ')[0]} bg-slate-50`}>
                             <h3 className="font-bold text-slate-800">{course.name}</h3>
                             <div className="flex items-center gap-3 mt-2 text-sm text-slate-500">
-                                <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {course.startTime} - {course.endTime}</span>
+                                <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> <span dir="ltr">{course.startTime} - {course.endTime}</span></span>
                                 {course.location && <span>📍 {course.location}</span>}
                             </div>
                         </div>

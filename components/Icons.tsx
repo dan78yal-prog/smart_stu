@@ -13,7 +13,10 @@ import {
   ListTodo,
   ChevronRight,
   Menu,
-  X
+  X,
+  Pencil,
+  XCircle,
+  AlertCircle
 } from 'lucide-react';
 
 export {
@@ -31,5 +34,8 @@ export {
   ListTodo,
   ChevronRight,
   Menu,
-  X
+  X,
+  Pencil,
+  XCircle,
+  AlertCircle
 };
