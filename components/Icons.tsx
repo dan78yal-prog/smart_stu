@@ -16,7 +16,15 @@ import {
   X,
   Pencil,
   XCircle,
-  AlertCircle
+  AlertCircle,
+  Moon,
+  Sun,
+  Download,
+  Upload,
+  Search,
+  Info,
+  ArrowLeft,
+  Filter
 } from 'lucide-react';
 
 export {
@@ -37,5 +45,13 @@ export {
   X,
   Pencil,
   XCircle,
-  AlertCircle
+  AlertCircle,
+  Moon,
+  Sun,
+  Download,
+  Upload,
+  Search,
+  Info,
+  ArrowLeft,
+  Filter
 };

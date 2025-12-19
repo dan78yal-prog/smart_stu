@@ -1,14 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>رفيق الطالب الذكي</title>
+    <title>رفيق الطالب الذكي | Smart Student</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -17,7 +17,6 @@
             colors: {
               primary: {
                 50: '#f0f9ff',
-                100: '#e0f2fe',
                 500: '#0ea5e9',
                 600: '#0284c7',
                 700: '#0369a1',
@@ -35,29 +34,26 @@
     <style>
       body {
         font-family: 'Tajawal', sans-serif;
-        background-color: #f8fafc;
+        transition: background-color 0.3s ease;
       }
-      ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       }
-      ::-webkit-scrollbar-track {
-        background: transparent;
+      .dark .glass-card {
+        background: rgba(30, 41, 59, 0.8);
       }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 3px;
-      }
-      .custom-scrollbar::-webkit-scrollbar {
-        width: 4px;
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      .animate-fade-in {
-        animation: fadeIn 0.4s ease-out forwards;
+      .animate-slide-up {
+        animation: slideUp 0.5s ease-out forwards;
       }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+      .dark ::-webkit-scrollbar-thumb { background: #475569; }
     </style>
   <script type="importmap">
 {
@@ -65,15 +61,15 @@
     "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
-  <body>
+  <body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
